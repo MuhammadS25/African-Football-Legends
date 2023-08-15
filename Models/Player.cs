@@ -46,13 +46,20 @@ namespace African_Football_Legends.Models
 		[DisplayName("Position")]
 		public PlayerPosition Position { get; set; }
 
+
+		[Required(ErrorMessage = "Provide valid Shirt number")]
+		[Range(1, 99, ErrorMessage = "Shirt Number must be between 1 and 99")]
+		[DisplayName("Shirt Number")]
+		public byte Shirt_Number { get; set; }
+
 		[Required(ErrorMessage = "Provide valid number of caps")]
 		[Range(1, 200, ErrorMessage = "Caps must be between 1 and 200")]
+		[DisplayName("International Caps")]
 		public short International_Caps { get; set; }
 
 		[Required(ErrorMessage = "Provide valid retire date")]
 		[Range(1900, 2023, ErrorMessage = "Retire date must be between 1900 and 2023")]
-		[DisplayName("Retire Date")]
+		[DisplayName("Retire Year")]
 		public short RetireDate { get; set; }
 
 		[DisplayName("Image")]

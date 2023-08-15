@@ -8,7 +8,7 @@ namespace African_Football_Legends.Data
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 		{
 		}
-		DbSet<Player> Players { get; set; }
-		DbSet<Nation> Nations { get; set; }
+		public DbSet<Player> Players { get; set; }
+		public DbSet<Nation> Nations { get; set; }
 	}
 }
