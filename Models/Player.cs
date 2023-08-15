@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace African_Football_Legends.Models
 {
@@ -49,13 +50,22 @@ namespace African_Football_Legends.Models
 		[Range(1, 200, ErrorMessage = "Caps must be between 1 and 200")]
 		public short International_Caps { get; set; }
 
+		[Required(ErrorMessage = "Provide valid retire date")]
+		[Range(1900, 2023, ErrorMessage = "Retire date must be between 1900 and 2023")]
+		[DisplayName("Retire Date")]
+		public short RetireDate { get; set; }
+
 		[DisplayName("Image")]
 		[ValidateNever]
 		public string ImageUrl { get; set; }
 
+		[DisplayName("Wikipedia Link")]
+		[WikipediaLink] // Custom Validation Attribute.
+		public string WikipediaLink { get; set; }
+
 		// Foreign Key.
-		[DisplayName("Department")]
-		[Range(1, int.MaxValue, ErrorMessage = "Select Valid Department")]
+		[DisplayName("Nationality")]
+		[Range(1, int.MaxValue, ErrorMessage = "Select Valid Nation")]
 		public int NationId { get; set; }
 
 		// Navigation Property.
