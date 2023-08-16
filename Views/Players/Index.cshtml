@@ -1,5 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model PlayerSearchViewModel
+
+<h1 style="background-color: beige; color: darkblue;">Welcome to African Football Legends!</h1>
+
+<h2>Players Data</h2>
+
+<br />
+
+<div class="row">
+	<div class="col-md-4">
+		<button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#filterSection" aria-expanded="false" aria-controls="filterSection">
+			Show Filters
+		</button>
+		<div class="collapse" id="filterSection">
+			<form asp-action="FilteredIndexView" method="get" class="mb-3">
+				<div class="mb-3">
+					<label for="searchTerm" class="form-label">Search by Name:</label>
+					<input type="text" name="SearchTerm" class="form-control" placeholder="Enter player name">
+				</div>
+				<div class="mb-3">
+					<label for="positionFilter" class="form-label">Filter by Position:</label>
+					<select name="PositionFilter" class="form-control">
+						<option value="">All Positions</option>
+						@foreach (var position in ViewBag.Positions)
+						{
+							<option value="@position.Value">@position.Text</option>
+						}
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="nationFilter" class="form-label">Filter by Nation:</label>
+					<select name="NationFilter" class="form-control">
+						<option value="">All Nations</option>
+						@foreach (var nation in ViewBag.Nations)
+						{
+							<option value="@nation.Id">@nation.NationName</option>
+						}
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<br />
+
+<a asp-controller="Players" asp-action="GetCreateView" class="btn btn-success mb-1">Create new Player</a>
+
+@if (Model.Players.Count > 0)
+{
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Nation</th>
+				<!-- Add more table headers here -->
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var player in Model.Players)
+			{
+				<tr>
+					<td>@player.FullName</td>
+					<td>@player.Position</td>
+					<td>@player.Nation.NationName</td>
+					<!-- Add more table cells here -->
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<h3 class="alert alert-danger text-center">No Players Found!</h3>
 }

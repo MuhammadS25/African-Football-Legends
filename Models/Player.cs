@@ -57,10 +57,15 @@ namespace African_Football_Legends.Models
 		[DisplayName("International Caps")]
 		public short International_Caps { get; set; }
 
-		[Required(ErrorMessage = "Provide valid retire date")]
-		[Range(1900, 2023, ErrorMessage = "Retire date must be between 1900 and 2023")]
-		[DisplayName("Retire Year")]
-		public short RetireDate { get; set; }
+        [Required(ErrorMessage = "Provide valid retire date")]
+        [Range(1900, 2023, ErrorMessage = "Retire date must be between 1900 and 2023")]
+        [DisplayName("Retire Year")]
+        public short RetireDate { get; set; }
+
+		[Required(ErrorMessage = "Provide valid number of goals")]
+		[Range(0, 100, ErrorMessage = "Goals must be between 0 and 100")]
+		[DisplayName("International Goals")]
+		public byte International_Goals { get; set; }
 
 		[DisplayName("Image")]
 		[ValidateNever]
