@@ -1,0 +1,67 @@
+﻿@model Nation
+
+<h1 class="alert alert-warning text-center">Edit Nation</h1>
+
+<div class="row">
+	<form class="col-4" method="post" asp-controller="Nations" asp-action="PostEdit" enctype="multipart/form-data">
+
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+		<input type="hidden" asp-for="Id" />
+		<input type="hidden" asp-for="ImageUrl" />
+		<div>
+			<label asp-for="NationName"></label>
+			<input type="text"
+				   asp-for=NationName class="form-control" placeholder="Enter Nation Name" />
+			<span asp-validation-for="NationName" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="FifaRanking"></label>
+			<input type="number"
+				   asp-for=FifaRanking class="form-control" step="1" placeholder="Enter Ranking" />
+			<span asp-validation-for="FifaRanking" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="AfricanCupTitles"></label>
+			<input type="number"
+				   asp-for=AfricanCupTitles class="form-control" step="1" placeholder="Enter Titles" />
+			<span asp-validation-for="AfricanCupTitles" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="FoundationYear"></label>
+			<input type="number"
+				   asp-for=FoundationYear class="form-control" placeholder="Enter Foundation Year" />
+			<span asp-validation-for="FoundationYear" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="ImageUrl"></label>
+			<input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg,.jpeg" onchange="AddImage()" />
+		</div>
+
+
+		<div>
+			<button type="submit" class="btn btn-primary mt-1">Edit</button>
+			<a asp-controller="Nations" asp-action="GetIndexView">Back to List</a>
+
+		</div>
+
+	</form>
+
+	<div class="col-4">
+		<img src="@Model.ImageUrl" id="natImage" style="width:50%;aspect-ratio:1/1" />
+	</div>
+
+</div>
+
+@section Scripts{
+	<script>
+		function AddImage() {
+			alert('Image Modified');
+			document.getElementById('natImage').src = window.URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
+		}
+	</script>
+}

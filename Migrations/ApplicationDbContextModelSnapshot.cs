@@ -33,10 +33,6 @@ namespace African_Football_Legends.Migrations
                     b.Property<int>("AfricanCupTitles")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("FifaRanking")
                         .HasColumnType("int");
 

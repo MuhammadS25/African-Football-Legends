@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Nation>
+<h1 style="background-color:beige;color:darkblue;">Welcome to African Nations!</h1>
+
+<h2>Nations Data</h2>
+<br />
+
+@{
+
+}
+
+
+
+<hr />
+
+@{
+
+}
+
+<a asp-controller="Nations" asp-action="GetCreateView" class="btn btn-success mb-1">Create new Nation</a>
+
+<br />
+@if (Model.Count() > 0)
+{
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>@Html.DisplayNameFor(n => n.FifaRanking)</th>
+				<th>@Html.DisplayNameFor(n => n.NationName)</th>
+				<th>@Html.DisplayNameFor(n => n.FoundationYear)</th>
+				<th>@Html.DisplayNameFor(n => n.AfricanCupTitles)</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var nation in Model)
+			{
+				<tr>
+					<td>@nation.FifaRanking</td>
+					<td>@nation.NationName</td>
+					<td>@nation.FoundationYear</td>
+					<td>@nation.AfricanCupTitles</td>
+					<td>
+						<a asp-controller="Nations" asp-action="GetDetailsView" asp-route-id="@nation.Id" title="Details" class="btn btn-outline-success"><i class="bi bi-list-ul"></i></a>
+
+						<a asp-controller="Nations" asp-action="GetEditView" asp-route-id="@nation.Id" title="Edit" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+
+						<a asp-controller="Nations" asp-action="GetDeleteView" asp-route-id="@nation.Id" title="Delete" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="3" style="text-align:right">Total Nations</th>
+				<th>@Model.Count()</th>
+			</tr>
+		</tfoot>
+	</table>
+}
+else
+{
+	<h1 class="alert alert-danger text-center">No Nations Found!</h1>
+}
+
+<br />
+
+@*<ul class="list-group col-3">
+	<li class="list-group-item active">Nations</li>
+	@foreach (var nation in Model)
+	{
+		<li class="list-group-item list-group-item-action">
+			@nation.NationName (@nation.FifaRanking)
+		</li>
+	}
+</ul>*@

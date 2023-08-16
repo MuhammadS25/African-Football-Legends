@@ -1,0 +1,47 @@
+﻿@model Nation
+
+<div class="row">
+
+	<div class="row">
+
+		<dl class="row col-6">
+			@*<dt class="col-2">Id</dt>
+			<dd class="col-10">@Html.DisplayFor(n => n.Id)</dd>*@
+
+			<dt class="col-2">@Html.DisplayNameFor(m => Model.NationName)</dt>
+			<dd class="col-10">@Html.DisplayFor(n => n.NationName)</dd>
+
+			<dt class="col-2">@Html.DisplayNameFor(m => Model.FifaRanking)</dt>
+			<dd class="col-10">@Html.DisplayFor(n => n.FifaRanking)</dd>
+
+			<dt class="col-2">@Html.DisplayNameFor(m => Model.AfricanCupTitles)</dt>
+			<dd class="col-10">@Html.DisplayFor(n => n.AfricanCupTitles)</dd>
+
+			<dt class="col-2">@Html.DisplayNameFor(m => Model.FoundationYear)</dt>
+			<dd class="col-10">@Html.DisplayFor(n => n.FoundationYear)</dd>
+
+		</dl>
+
+
+		<div class="col-6">
+			<img src="@Model.ImageUrl" style="width:50%;aspect-ratio:1/1" />
+		</div>
+
+		<h3>@Html.DisplayFor(n => n.NationName) Players</h3>
+		@if (Model.Players.Count > 0)
+		{
+			<ul>
+				@foreach (var item in Model.Players)
+				{
+					<li>@item.FullName </li>
+				}
+			</ul>
+		}
+		else
+		{
+			<h1 class="alert alert-danger">There is no Players for @Html.DisplayFor(n => n.NationName).</h1>
+		}
+	</div>
+
+</div>
+<a asp-controller="Nations" asp-action="GetIndexView">Back to List</a>

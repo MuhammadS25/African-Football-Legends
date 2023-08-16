@@ -6,7 +6,8 @@
     <title>@ViewData["Title"] - African_Football_Legends</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/African_Football_Legends.styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/African_Football_Legends.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -24,6 +25,14 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Players" asp-action="GetIndexView">Players</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Nations" asp-action="GetIndexView">Nations</a>
                         </li>
                     </ul>
                 </div>

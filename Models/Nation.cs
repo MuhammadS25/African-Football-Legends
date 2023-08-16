@@ -29,11 +29,6 @@ namespace African_Football_Legends.Models
 		[DisplayName("Foundation Year")]
 		public int FoundationYear { get; set; }
 
-		[Required(ErrorMessage = "Provide valid Description")]
-		[MinLength(12, ErrorMessage = "Description musn't be less than 12 character")]
-		[DisplayName("Description")]
-		public string Description { get; set; }
-
 		[DisplayName("Image")]
 		[ValidateNever]
 		public string ImageUrl { get; set; }
