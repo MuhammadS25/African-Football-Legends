@@ -22,9 +22,10 @@
 
 	</dl>
 
-	<div class="col-6">
-		<img src="@Model.ImageUrl" style="width:50%;aspect-ratio:1/1" />
+	<div class="col-4">
+		<img src="@Model.ImageUrl" id="natImage" class="img-fluid" />
 	</div>
+
 </div>
 
 <form method="post" asp-controller="Nations" asp-action="PostDelete">

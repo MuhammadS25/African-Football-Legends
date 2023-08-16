@@ -24,7 +24,7 @@
 		<div>
 			<label asp-for="AfricanCupTitles"></label>
 			<input type="number"
-				   asp-for=AfricanCupTitles class="form-control" step="1"  placeholder="Enter Titles" />
+				   asp-for=AfricanCupTitles class="form-control" step="1" placeholder="Enter Titles" />
 			<span asp-validation-for="AfricanCupTitles" class="text-danger"></span>
 		</div>
 
@@ -51,8 +51,9 @@
 	</form>
 
 	<div class="col-4">
-		<img src="" id="natImage" style="object-fit:contain" />
+		<img src="" id="natImage" class="img-fluid" />
 	</div>
+
 </div>
 
 @section Scripts{

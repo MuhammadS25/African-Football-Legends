@@ -23,9 +23,10 @@
 		</dl>
 
 
-		<div class="col-6">
-			<img src="@Model.ImageUrl" style="width:50%;aspect-ratio:1/1" />
+		<div class="col-4">
+			<img src="@Model.ImageUrl" id="natImage" class="img-fluid" />
 		</div>
+
 
 		<h3>@Html.DisplayFor(n => n.NationName) Players</h3>
 		@if (Model.Players.Count > 0)
