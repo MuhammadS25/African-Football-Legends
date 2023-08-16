@@ -1,0 +1,68 @@
+﻿@model Player
+
+<h1 class="alert alert-danger text-center">Are you sure you want to delete?</h1>
+
+<div class="row">
+
+	<div class="row">
+
+		<dl class="row col-6">
+			@*<dt class="col-2">Id</dt>
+			<dd class="col-10">@Html.DisplayFor(n => n.Id)</dd>*@
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.FullName)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.FullName)</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.Nation.NationName)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.Nation.NationName)</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.DateOfBirth)</dt>
+			<dd class="col-10">@Model.DateOfBirth.ToString("yyyy/MM/dd")</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.International_Caps)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.International_Caps)</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.International_Goals)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.International_Goals)</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.Position)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.Position)</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.Shirt_Number)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.Shirt_Number)</dd>
+
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.RetireDate)</dt>
+			<dd class="col-10">
+				@{
+					if (Model.RetireDate is 2023)
+					{
+						<span class="text-success">Still Active!</span>
+					}
+					else
+					{
+						@Model.RetireDate
+					}
+				}
+			</dd>
+
+			<dt class="col-3">@Html.DisplayNameFor(m => Model.Summary)</dt>
+			<dd class="col-10">@Html.DisplayFor(p => p.Summary)</dd>
+
+		</dl>
+
+
+		<div class="col-4">
+			<img src="@Model.ImageUrl" id="natImage" class="img-fluid" />
+		</div>
+
+	</div>
+
+</div>
+
+<form method="post" asp-controller="Players" asp-action="PostDelete">
+	<input type="hidden" asp-for="Id" />
+	<button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a asp-controller="Players" asp-action="GetIndexView">Back to List</a>

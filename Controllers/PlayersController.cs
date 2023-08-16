@@ -21,7 +21,7 @@ namespace African_Football_Legends.Controllers
         {
             var viewModel = new PlayerSearchViewModel
             {
-                Players = _context.Players.OrderByDescending(p => p.International_Goals).ToList(),
+                Players = _context.Players.OrderByDescending(p => p.International_Caps).ToList(),
             };
 
             ViewBag.Positions = Enum.GetValues(typeof(Player.PlayerPosition))
@@ -58,7 +58,7 @@ namespace African_Football_Legends.Controllers
 
             var viewModel = new PlayerSearchViewModel
             {
-                Players = players.ToList(),
+                Players = players.OrderByDescending(p => p.International_Caps).ToList(),
                 SearchTerm = searchModel.SearchTerm,
                 PositionFilter = searchModel.PositionFilter,
                 NationFilter = searchModel.NationFilter

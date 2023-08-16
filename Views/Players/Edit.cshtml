@@ -1,0 +1,110 @@
+﻿@model Player
+
+<h1 class="alert alert-warning text-center">Edit Player</h1>
+
+<div class="row">
+	<form class="col-4" method="post" asp-controller="Players" asp-action="PostEdit" enctype="multipart/form-data">
+
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+		<input type="hidden" asp-for="Id" />
+		<input type="hidden" asp-for="ImageUrl" />
+
+		<div>
+			<label asp-for="FullName"></label>
+			<input type="text" asp-for="FullName" class="form-control" placeholder="Enter Full Name" />
+			<span asp-validation-for="FullName" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="Summary"></label>
+			<textarea asp-for="Summary" class="form-control" placeholder="Enter Career Summary"></textarea>
+			<span asp-validation-for="Summary" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="DateOfBirth"></label>
+			<input type="date" asp-for="DateOfBirth" class="form-control" />
+			<span asp-validation-for="DateOfBirth" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="Position"></label>
+			<select asp-for="Position" class="form-control">
+				<option value="">Select Position</option>
+				@foreach (var position in Enum.GetValues(typeof(Player.PlayerPosition)))
+				{
+					<option value="@position">@position</option>
+				}
+			</select>
+			<span asp-validation-for="Position" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="Shirt_Number"></label>
+			<input type="number" asp-for="Shirt_Number" class="form-control" placeholder="Enter Shirt Number" />
+			<span asp-validation-for="Shirt_Number" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="International_Caps"></label>
+			<input type="number" asp-for="International_Caps" class="form-control" placeholder="Enter International Caps" />
+			<span asp-validation-for="International_Caps" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="International_Goals"></label>
+			<input type="number" asp-for="International_Goals" class="form-control" placeholder="Enter International Goals" />
+			<span asp-validation-for="International_Goals" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="RetireDate"></label>
+			<input type="number" asp-for="RetireDate" class="form-control" placeholder="Enter Retire Year" />
+			<span asp-validation-for="RetireDate" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="WikipediaLink"></label>
+			<input type="url" asp-for="WikipediaLink" class="form-control" placeholder="Enter Wikipedia Link" />
+			<span asp-validation-for="WikipediaLink" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label asp-for="NationId"></label>
+			<select asp-for="NationId" class="form-control">
+				<option value="">Select Nation</option>
+				@foreach (var nation in ViewBag.Nations)
+				{
+					<option value="@nation.Id">@nation.NationName</option>
+				}
+			</select>
+			<span asp-validation-for="NationId" class="text-danger"></span>
+		</div>
+
+		<br />
+
+		<div>
+			<label asp-for="ImageUrl"></label>
+			<input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg,.jpeg" onchange="AddImage()" />
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary mt-1">Edit</button>
+			<a asp-controller="Players" asp-action="GetIndexView">Back to List</a>
+		</div>
+	</form>
+
+	<div class="col-4">
+		<img src="@Model.ImageUrl" id="pImage" class="img-fluid" />
+	</div>
+</div>
+
+@section Scripts{
+	<script>
+		function AddImage() {
+			alert("Image Added");
+			document.getElementById("pImage").src = window.URL.createObjectURL(document.getElementById("imageFormFile").files[0]);
+		}
+	</script>
+}
