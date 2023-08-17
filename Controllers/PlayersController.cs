@@ -56,9 +56,18 @@ namespace African_Football_Legends.Controllers
                 players = players.Where(p => p.NationId == searchModel.NationFilter);
             }
 
+            if (searchModel.byGoals)
+            {
+				players = players.OrderByDescending(p => p.International_Goals);
+			}
+			else
+            {
+				players = players.OrderByDescending(p => p.International_Caps);
+			}
+
             var viewModel = new PlayerSearchViewModel
             {
-                Players = players.OrderByDescending(p => p.International_Caps).ToList(),
+                Players = players.ToList(),
                 SearchTerm = searchModel.SearchTerm,
                 PositionFilter = searchModel.PositionFilter,
                 NationFilter = searchModel.NationFilter
