@@ -15,7 +15,7 @@ namespace African_Football_Legends.Models
 		public string NationName { get; set; }
 
 		[Required(ErrorMessage = "Provide a valid Ranking")]
-		[Range(1, 300, ErrorMessage = "Ranking must be between 1 and 211")]
+		[Range(1, 211, ErrorMessage = "Ranking must be between 1 and 211")]
 		[DisplayName("Rank")]
 		public int FifaRanking { get; set; }
 
